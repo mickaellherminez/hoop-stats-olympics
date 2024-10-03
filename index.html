@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basketball Paris 2024</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <h1>Basketball Paris 2024</h1>
+        <div class="subtitle">Jeux Olympiques d'Été</div>
+        <div class="eiffel-tower"></div>
+        <img src="https://raw.githubusercontent.com/mickaellherminez/img/main/phryge-paris-2024.png" alt="Mascotte Phryge" class="mascotte">
+    </header>
+
+    <!-- Toolbar -->
+    <div class="toolbar">
+        <div class="search-container">
+            <div class="dropdown">
+                <button id="filterDropdown" aria-haspopup="true" aria-expanded="false">Filtres</button>
+                <div id="filterContent" class="dropdown-content" aria-labelledby="filterDropdown">
+                    <div class="filter-group">
+                        <label for="phaseFilter">Phase</label>
+                        <select id="phaseFilter">
+                            <option value="">Tous</option>
+                            <option value="Group Phase">Phase de Groupes</option>
+                            <option value="Quarter-Final">Quarts de Finale</option>
+                            <option value="Semi-Final">Demi-Finales</option>
+                            <option value="Medal">Matchs pour Médailles</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="dateFilter">Date</label>
+                        <input type="date" id="dateFilter">
+                    </div>
+                    <div class="filter-group">
+                        <label for="venueFilter">Stade</label>
+                        <input type="text" id="venueFilter" placeholder="Nom du stade">
+                    </div>
+                    <div class="filter-group">
+                        <label for="teamFilter">Équipe</label>
+                        <input type="text" id="teamFilter" placeholder="Nom de l'équipe">
+                    </div>
+                    <div class="filter-group">
+                        <label for="resultFilter">Résultat</label>
+                        <select id="resultFilter">
+                            <option value="">Tous</option>
+                            <option value="winner">Victoires</option>
+                            <option value="loser">Défaites</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="medalFilter">Médaille</label>
+                        <select id="medalFilter">
+                            <option value="">Toutes</option>
+                            <option value="gold">Or</option>
+                            <option value="silver">Argent</option>
+                            <option value="bronze">Bronze</option>
+                        </select>
+                    </div>
+                    <button id="applyFilters" aria-label="Appliquer les filtres">Appliquer les filtres</button>
+                </div>
+            </div>
+            <input type="text" id="searchInput" placeholder="Rechercher un match..." aria-label="Rechercher un match">
+            <button id="searchButton" aria-label="Rechercher">Rechercher</button>
+        </div>
+    </div>
+
+    <!-- Contenu principal -->
+    <main>
+        <!-- Graphique 1 -->
+        <section id="graph1">
+            <h2>2024 Olympic Games - Women's Basketball</h2>
+            <div id="tournament-tree"></div>
+        </section>
+
+        <!-- Graphique 2 -->
+        <section id="graph2">
+            <h2>Statistiques des Équipes</h2>
+            <div id="chart"></div>
+            <div class="tooltip" aria-live="polite"></div>
+        </section>
+    </main>
+
+    <!-- Scripts -->
+    <script src="/lib/d3js-v7.8.5.js"></script>
+    <script src="/js/script.js"></script>
+
+</body>
+</html>

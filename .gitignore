@@ -1,0 +1,18 @@
+# Fichiers système
+.DS_Store
+Thumbs.db
+
+# Dossiers de dépendances
+/node_modules
+
+# Fichiers de build
+/dist
+
+# Fichiers d'environnement
+.env
+
+# Fichiers de logs
+*.log
+
+# Fichiers temporaires
+*.tmp
