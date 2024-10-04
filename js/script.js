@@ -36,6 +36,7 @@ document.addEventListener('DOMContentLoaded', function () {
       medal: document.getElementById('medalFilter').value,
     };
 
+    // eslint-disable-next-line no-console
     console.log('Recherche avec filtres:', filters);
     // Implémentez ici la logique de recherche et de filtrage pour les graphiques
 
