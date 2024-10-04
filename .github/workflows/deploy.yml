@@ -23,4 +23,3 @@ jobs:
           protocol: ftps
           port: ${{ secrets.PORT }}
           dangerous-clean-slate: true
-          passive: true
