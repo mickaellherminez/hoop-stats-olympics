@@ -15,11 +15,11 @@ jobs:
       - name: Synchroniser les fichiers via FTP
         uses: SamKirkland/FTP-Deploy-Action@4.3.0
         with:
-          ftp-server: ${{ secrets.HOST }}
-          ftp-username: ${{ secrets.USERNAME }}
-          ftp-password: ${{ secrets.PASSWORD }}
-          remote-dir: /public_html/
+          server: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.PASSWORD }}
+          server-dir: /public_html/
           local-dir: ./
-          method: ftp
+          protocol: ftp
           port: ${{ secrets.PORT }}
-          git-ftp-args: --insecure
+          dangerous-clean-slate: true
