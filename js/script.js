@@ -54,7 +54,23 @@ function loadTournamentTree(filters) {
     const tournamentDataWomen = {
         name: "2024 Olympic Games - Women's Basketball",
         children: [
-            // ... (Insérez ici toutes les données du tournoi féminin fournies précédemment) ...
+            {
+                name: "Group A",
+                children: [
+                    { name: "Team A", team: "Team A", result: "2-1" },
+                    { name: "Team B", team: "Team B", result: "1-2" },
+                    // Ajoutez d'autres équipes ici
+                ]
+            },
+            {
+                name: "Group B",
+                children: [
+                    { name: "Team C", team: "Team C", result: "3-0" },
+                    { name: "Team D", team: "Team D", result: "0-3" },
+                    // Ajoutez d'autres équipes ici
+                ]
+            },
+            // Ajoutez d'autres groupes ici
         ],
     };
 
@@ -67,6 +83,12 @@ function loadTournamentTree(filters) {
     if (filters) {
         // Implémentez ici la logique de filtrage des données du tournoi
         filteredData = applyFiltersToTournamentData(tournamentDataWomen, filters);
+    }
+
+    // Vérification supplémentaire
+    if (!filteredData || !filteredData.children || filteredData.children.length === 0) {
+        console.error("Données filtrées invalides ou vides");
+        return; // Ne pas initialiser l'arbre si les données sont invalides
     }
 
     initializeTree(filteredData);
@@ -87,6 +109,13 @@ function loadTournamentTree(filters) {
             .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
         const root = d3.hierarchy(tournamentData);
+        
+        // Vérification pour s'assurer que root et root.children existent
+        if (!root || !root.children || root.children.length === 0) {
+            console.error("Données du tournoi invalides ou vides");
+            return; // Sortir de la fonction si les données sont invalides
+        }
+
         root.x0 = height / 2;
         root.y0 = 0;
 
@@ -168,7 +197,7 @@ function loadTournamentTree(filters) {
                         }
                         return `<tspan style="fill: ${textColor};">${medalEmoji}${d.data.team} ${d.data.result}</tspan>`;
                     } else {
-                        return d.data.name; // Nœuds non-feuilles
+                        return d.data.name; // Nuds non-feuilles
                     }
                 });
 
@@ -179,7 +208,7 @@ function loadTournamentTree(filters) {
                 .transition()
                 .duration(750)
                 .attr("transform", function (d) {
-                    return "translate(" + d.y + "," + d.x + ")";
+                    return "translate(" + (d.y || 0) + "," + (d.x || 0) + ")";
                 });
 
             nodeUpdate.select("image").attr("xlink:href", function (d) {
@@ -239,10 +268,10 @@ function loadTournamentTree(filters) {
             });
 
             function diagonal(s, d) {
-                return `M ${s.y} ${s.x}
-                      C ${(s.y + d.y) / 2} ${s.x},
-                        ${(s.y + d.y) / 2} ${d.x},
-                        ${d.y} ${d.x}`;
+                return `M ${s.y || 0} ${s.x || 0}
+                      C ${((s.y || 0) + (d.y || 0)) / 2} ${s.x || 0},
+                        ${((s.y || 0) + (d.y || 0)) / 2} ${d.x || 0},
+                        ${d.y || 0} ${d.x || 0}`;
             }
 
             function click(event, d) {
@@ -298,18 +327,19 @@ function loadTournamentTree(filters) {
         let tooltipTimeout;
     }
 
-    function applyFiltersToTournamentData(data, filters) {
-        // Implémentez ici la logique de filtrage des données du tournoi
-        // Cette fonction doit retourner les données filtrées en fonction des filtres appliqués
-        // Pour simplifier, nous retournons les données sans filtrage
-        return data;
+    function applyFiltersToTournamentData(tournamentDataWomen, filters) {
+        // Implémentez ici la logique de filtrage
+        // Pour l'instant, retournons simplement les données non filtrées
+        return tournamentDataWomen;
     }
 }
 
 function loadBubbleChart(filters) {
     // Données des équipes (Graphique 2)
     const data = [
-        // ... (Insérez ici les données des équipes fournies précédemment) ...
+        { teamName: "Team A", totalPoints: 100, wins: 3, matchesPlayed: 5 },
+        { teamName: "Team B", totalPoints: 80, wins: 2, matchesPlayed: 5 },
+        // Ajoutez d'autres équipes ici
     ];
 
     // Efface le contenu précédent
@@ -398,55 +428,49 @@ function loadBubbleChart(filters) {
         .attr("aria-label", d => `${d.data.teamName}: ${d.data.totalPoints} points, ${d.data.wins} victoires`);
 
     const circles = bubbles.append("circle")
-        .attr("r", 0) // Démarrage avec un rayon de 0
-        .style("fill", d => color(d.data.wins))
+        .attr("r", 0)
+        .style("fill", d => color(d.data.wins || 0)) // Ajout d'une valeur par défaut
         .style("stroke", config.strokeColor)
         .style("stroke-width", config.strokeWidth)
         .transition()
-        .duration(1000) // Durée de l'animation
-        .ease(d3.easeCubicOut) // Animation douce vers la taille finale
-        .attr("r", d => d.r)
+        .duration(1000)
+        .ease(d3.easeCubicOut)
+        .attr("r", d => d.r || 0) // Ajout d'une valeur par défaut
         .on("start", function(d) {
-            // Ajouter les lignes de basket lors de l'animation
-            addBasketballLines(d3.select(this.parentNode), d);
+            // Vérification que d est défini avant d'appeler addBasketballLines
+            if (d) {
+                addBasketballLines(d3.select(this.parentNode), d);
+            }
         })
         .on("end", function(d) {
-            // Ajouter le texte après les lignes
-            const g = d3.select(this.parentNode);
-            const text = g.append("text")
-                .style("text-anchor", "middle")
-                .style("fill", config.textColor)
-                .style("font-weight", "bold")
-                .style("text-shadow", config.textShadow);
+            // Vérification que d et d.data sont définis
+            if (d && d.data) {
+                const g = d3.select(this.parentNode);
+                const text = g.append("text")
+                    .style("text-anchor", "middle")
+                    .style("fill", config.textColor)
+                    .style("font-weight", "bold")
+                    .style("text-shadow", config.textShadow);
 
-            text.append("tspan")
-                .attr("x", 0)
-                .attr("dy", "0.35em")
-                .style("font-size", Math.min(d.r / 3, 24) + "px")
-                .text(d.data.teamName.split(" ")[0]);
+                // Vérification que teamName existe et n'est pas undefined
+                const teamName = d.data.teamName ? d.data.teamName.split(" ")[0] : "N/A";
+                text.append("tspan")
+                    .attr("x", 0)
+                    .attr("dy", "0.35em")
+                    .style("font-size", Math.min((d.r || 0) / 3, 24) + "px")
+                    .text(teamName);
 
-            text.append("tspan")
-                .attr("x", 0)
-                .attr("dy", "1.2em")
-                .style("font-size", Math.min(d.r / 5, 16) + "px")
-                .text(`${d.data.totalPoints} pts`);
+                text.append("tspan")
+                    .attr("x", 0)
+                    .attr("dy", "1.2em")
+                    .style("font-size", Math.min((d.r || 0) / 5, 16) + "px")
+                    .text(`${d.data.totalPoints || 0} pts`);
+            }
         });
 
     // Ajout des lignes de basket sur les bulles
     function addBasketballLines(g, d) {
-        // Les lignes grandissent avec le cercle
-        g.append("line")
-            .attr("x1", 0)
-            .attr("y1", 0)
-            .attr("x2", 0)
-            .attr("y2", 0)
-            .attr("stroke", config.strokeColor)
-            .attr("stroke-width", config.strokeWidth)
-            .transition()
-            .duration(1000)
-            .ease(d3.easeCubicOut)
-            .attr("y1", -d.r)
-            .attr("y2", d.r);
+        const radius = (d && typeof d.r === 'number') ? d.r : 0;
 
         g.append("line")
             .attr("x1", 0)
@@ -458,8 +482,21 @@ function loadBubbleChart(filters) {
             .transition()
             .duration(1000)
             .ease(d3.easeCubicOut)
-            .attr("x1", -d.r)
-            .attr("x2", d.r);
+            .attr("y1", -radius)
+            .attr("y2", radius);
+
+        g.append("line")
+            .attr("x1", 0)
+            .attr("y1", 0)
+            .attr("x2", 0)
+            .attr("y2", 0)
+            .attr("stroke", config.strokeColor)
+            .attr("stroke-width", config.strokeWidth)
+            .transition()
+            .duration(1000)
+            .ease(d3.easeCubicOut)
+            .attr("x1", -radius)
+            .attr("x2", radius);
 
         g.append("path")
             .attr("d", `M0,0 Q0,0 0,0`)
@@ -469,7 +506,7 @@ function loadBubbleChart(filters) {
             .transition()
             .duration(1000)
             .ease(d3.easeCubicOut)
-            .attr("d", `M${-d.r*0.7},${-d.r*0.7} Q0,${-d.r*0.4} ${d.r*0.7},${-d.r*0.7}`);
+            .attr("d", `M${-radius*0.7},${-radius*0.7} Q0,${-radius*0.4} ${radius*0.7},${-radius*0.7}`);
 
         g.append("path")
             .attr("d", `M0,0 Q0,0 0,0`)
@@ -479,7 +516,7 @@ function loadBubbleChart(filters) {
             .transition()
             .duration(1000)
             .ease(d3.easeCubicOut)
-            .attr("d", `M${-d.r*0.7},${d.r*0.7} Q0,${d.r*0.4} ${d.r*0.7},${d.r*0.7}`);
+            .attr("d", `M${-radius*0.7},${radius*0.7} Q0,${radius*0.4} ${radius*0.7},${radius*0.7}`);
     }
 
     // Gestion des événements de survol pour l'affichage des infobulles
@@ -507,7 +544,7 @@ function loadBubbleChart(filters) {
 
     // Fonction de mise à jour de la position des bulles et du texte
     function ticked() {
-        bubbles.attr("transform", d => `translate(${d.x},${d.y})`);
+        bubbles.attr("transform", d => `translate(${d.x || 0},${d.y || 0})`);
     }
 
     // Fonctions de gestion du drag des bulles
