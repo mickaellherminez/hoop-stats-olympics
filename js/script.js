@@ -1,5 +1,3 @@
-/* global d3 */
-
 document.addEventListener('DOMContentLoaded', function () {
   // Gestion de la toolbar
   const searchInput = document.getElementById('searchInput');
@@ -38,7 +36,6 @@ document.addEventListener('DOMContentLoaded', function () {
       medal: document.getElementById('medalFilter').value,
     };
 
-    // eslint-disable-next-line no-console
     console.log('Recherche avec filtres:', filters);
     // Implémentez ici la logique de recherche et de filtrage pour les graphiques
 
@@ -255,7 +252,7 @@ function loadTournamentTree(filters) {
           return diagonal(d, d.parent);
         });
 
-      const _linkExit = link
+      const linkExit = link
         .exit()
         .transition()
         .duration(750)
@@ -335,7 +332,7 @@ function loadTournamentTree(filters) {
   }
 }
 
-function loadBubbleChart(_filters) {
+function loadBubbleChart(filters) {
   // Données des équipes (Graphique 2)
   const data = [
     { teamName: 'Team A', totalPoints: 100, wins: 3, matchesPlayed: 5 },
@@ -349,9 +346,9 @@ function loadBubbleChart(_filters) {
   // Application des filtres
   let filteredData = data;
 
-  if (_filters) {
+  if (filters) {
     // Implémentez ici la logique de filtrage des données des équipes
-    filteredData = applyFiltersToTeamData(data, _filters);
+    filteredData = applyFiltersToTeamData(data, filters);
   }
 
   // Configuration du graphique
@@ -450,7 +447,7 @@ function loadBubbleChart(_filters) {
       d => `${d.data.teamName}: ${d.data.totalPoints} points, ${d.data.wins} victoires`
     );
 
-  const _circles = bubbles
+  const circles = bubbles
     .append('circle')
     .attr('r', 0)
     .style('fill', d => color(d.data.wins || 0)) // Ajout d'une valeur par défaut
