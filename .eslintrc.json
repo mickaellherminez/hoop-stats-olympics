@@ -13,5 +13,9 @@
     "prettier/prettier": "error",
     "no-unused-vars": "warn",
     "no-console": "warn"
-  }
+  },
+  "globals": {
+    "d3": "readonly"
+  },
+  "ignorePatterns": ["lib/*.js"]
 }
