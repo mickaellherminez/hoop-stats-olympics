@@ -20,6 +20,6 @@ jobs:
           password: ${{ secrets.PASSWORD }}
           server-dir: /public_html/
           local-dir: ./
-          protocol: ftps
+          protocol: ftp
           port: ${{ secrets.PORT }}
           dangerous-clean-slate: true
