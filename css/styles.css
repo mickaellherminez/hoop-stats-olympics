@@ -1,305 +1,324 @@
 /* Suppression de l'importation des polices (déplacée dans le HTML) */
 
 :root {
-    --primary-color: #0085CA;
-    --secondary-color: #ED1C24;
-    --accent-color: #FFC845;
-    --text-color: #333333;
-    --background-color: #F5F5F5;
+  --primary-color: #0085ca;
+  --secondary-color: #ed1c24;
+  --accent-color: #ffc845;
+  --text-color: #333333;
+  --background-color: #f5f5f5;
 }
 
 body {
-    font-family: 'Raleway', sans-serif;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    background-color: var(--background-color);
-    color: var(--text-color);
+  font-family: 'Raleway', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: var(--background-color);
+  color: var(--text-color);
 }
 
 /* Header */
 .header {
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    color: white;
-    padding: 20px;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  color: white;
+  padding: 20px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
 }
 
 .header::before {
-    content: "";
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="none" stroke="white" stroke-width="2" stroke-opacity="0.1"/></svg>');
-    background-size: 20px 20px;
-    transform: rotate(30deg);
-    opacity: 0.2;
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="none" stroke="white" stroke-width="2" stroke-opacity="0.1"/></svg>');
+  background-size: 20px 20px;
+  transform: rotate(30deg);
+  opacity: 0.2;
 }
 
 h1 {
-    margin: 0;
-    font-size: 28px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 2px;
+  margin: 0;
+  font-size: 28px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
 }
 
 .subtitle {
-    font-size: 16px;
-    margin-top: 5px;
-    font-weight: 400;
+  font-size: 16px;
+  margin-top: 5px;
+  font-weight: 400;
 }
 
 .eiffel-tower {
-    position: absolute;
-    bottom: 0;
-    right: 10%;
-    width: 50px;
-    height: 80px;
-    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 160"><path d="M50 0L0 160H100L50 0Z" fill="white" fill-opacity="0.2"/></svg>');
-    background-repeat: no-repeat;
-    background-size: contain;
+  position: absolute;
+  bottom: 0;
+  right: 10%;
+  width: 50px;
+  height: 80px;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 160"><path d="M50 0L0 160H100L50 0Z" fill="white" fill-opacity="0.2"/></svg>');
+  background-repeat: no-repeat;
+  background-size: contain;
 }
 
 .mascotte {
-    height: 80px;
-    position: absolute;
-    left: 10%;
-    bottom: 0px;
-    z-index: 2;
+  height: 80px;
+  position: absolute;
+  left: 10%;
+  bottom: 0px;
+  z-index: 2;
 }
 
 /* Toolbar */
 .toolbar {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 15px 20px;
-    background-color: white;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px 20px;
+  background-color: white;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 .search-container {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    max-width: 1200px;
-    width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  max-width: 1200px;
+  width: 100%;
 }
 
 .dropdown button {
-    padding: 10px 20px;
-    background-color: var(--accent-color);
-    color: var(--text-color);
-    border: none;
-    border-radius: 25px;
-    cursor: pointer;
-    font-size: 14px;
-    font-weight: 700;
-    text-transform: uppercase;
-    transition: all 0.3s ease;
-    white-space: nowrap;
-    margin-right: 10px;
+  padding: 10px 20px;
+  background-color: var(--accent-color);
+  color: var(--text-color);
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  margin-right: 10px;
 }
 
-input[type="text"], input[type="date"], select {
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 25px;
-    font-size: 14px;
-    font-family: 'Raleway', sans-serif;
-    flex-grow: 1;
+input[type='text'],
+input[type='date'],
+select {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 25px;
+  font-size: 14px;
+  font-family: 'Raleway', sans-serif;
+  flex-grow: 1;
 }
 
 #searchInput {
-    padding-left: 20px;
-    flex-grow: 2;
+  padding-left: 20px;
+  flex-grow: 2;
 }
 
 button {
-    padding: 10px 20px;
-    background-color: var(--accent-color);
-    color: var(--text-color);
-    border: none;
-    border-radius: 25px;
-    cursor: pointer;
-    font-size: 14px;
-    font-weight: 700;
-    text-transform: uppercase;
-    transition: all 0.3s ease;
-    white-space: nowrap;
+  padding: 10px 20px;
+  background-color: var(--accent-color);
+  color: var(--text-color);
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  white-space: nowrap;
 }
 
 button:hover {
-    background-color: var(--secondary-color);
-    color: white;
+  background-color: var(--secondary-color);
+  color: white;
 }
 
 .dropdown {
-    position: relative;
-    display: inline-block;
+  position: relative;
+  display: inline-block;
 }
 
 .dropdown-content {
-    display: none;
-    position: absolute;
-    left: 0;
-    top: 100%;
-    background-color: white;
-    min-width: 250px;
-    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-    z-index: 1;
-    padding: 15px;
-    border-radius: 10px;
+  display: none;
+  position: absolute;
+  left: 0;
+  top: 100%;
+  background-color: white;
+  min-width: 250px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+  padding: 15px;
+  border-radius: 10px;
 }
 
 .dropdown-content.active {
-    display: block;
+  display: block;
 }
 
 .filter-group {
-    margin-bottom: 15px;
+  margin-bottom: 15px;
 }
 
 .filter-group label {
-    display: block;
-    margin-bottom: 5px;
-    color: var(--primary-color);
-    font-weight: 700;
+  display: block;
+  margin-bottom: 5px;
+  color: var(--primary-color);
+  font-weight: 700;
 }
 
 /* Graphiques */
 main {
-    padding: 20px;
+  padding: 20px;
 }
 
 section {
-    margin-bottom: 50px;
+  margin-bottom: 50px;
 }
 
 #tournament-tree {
-    width: 100%;
-    height: 600px;
-    overflow: auto;
-    background-color: #f0f0f0;
-    border: 1px solid #ddd;
+  width: 100%;
+  height: 600px;
+  overflow: auto;
+  background-color: #f0f0f0;
+  border: 1px solid #ddd;
 }
 
 #chart {
-    width: 100%;
-    height: 600px;
-    background-color: #f0f0f0;
-    border: 1px solid #ddd;
+  width: 100%;
+  height: 600px;
+  background-color: #f0f0f0;
+  border: 1px solid #ddd;
 }
 
 /* Styles spécifiques aux graphiques */
 .node {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .node image {
-    width: 24px;
-    height: 24px;
+  width: 24px;
+  height: 24px;
 }
 
 .node text {
-    font: 12px sans-serif;
+  font: 12px sans-serif;
 }
 
 .link {
-    fill: none;
-    stroke: #ccc;
-    stroke-width: 1.5px;
+  fill: none;
+  stroke: #ccc;
+  stroke-width: 1.5px;
 }
 
 .tooltip {
-    position: absolute;
-    background: rgba(255,255,255,0.95);
-    border: none;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    padding: 15px;
-    border-radius: 8px;
-    pointer-events: none;
-    opacity: 0;
-    transition: all 0.3s ease;
-    font-size: 14px;
-    line-height: 1.5;
+  position: absolute;
+  background: rgba(255, 255, 255, 0.95);
+  border: none;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  border-radius: 8px;
+  pointer-events: none;
+  opacity: 0;
+  transition: all 0.3s ease;
+  font-size: 14px;
+  line-height: 1.5;
 }
 
 .tooltip strong {
-    font-size: 16px;
-    display: block;
-    margin-bottom: 5px;
+  font-size: 16px;
+  display: block;
+  margin-bottom: 5px;
 }
 
 .tooltip ul {
-    margin: 0;
-    padding-left: 20px;
+  margin: 0;
+  padding-left: 20px;
 }
 
 /* Responsive */
 @media (max-width: 768px) {
-    .toolbar {
-        flex-direction: column;
-        align-items: stretch;
-    }
-    .search-container {
-        flex-direction: column;
-        align-items: stretch;
-    }
-    .dropdown-content {
-        width: 100%;
-        left: 0;
-    }
-    .mascotte {
-        display: none;
-    }
-    #tournament-tree, #chart {
-        height: 400px;
-    }
+  .toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .search-container {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .dropdown-content {
+    width: 100%;
+    left: 0;
+  }
+  .mascotte {
+    display: none;
+  }
+  #tournament-tree,
+  #chart {
+    height: 400px;
+  }
 }
 
 /* Ajout de règles pour optimiser le chargement des polices */
 @font-face {
-    font-family: 'Raleway';
-    font-style: normal;
-    font-weight: 400;
-    font-display: swap;
-    src: local('Raleway'), url(https://fonts.gstatic.com/s/raleway/v22/1Ptxg8zYS_SKggPN4iEgvnHyvveLxVvaorCIPrE.woff2) format('woff2');
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src:
+    local('Raleway'),
+    url(https://fonts.gstatic.com/s/raleway/v22/1Ptxg8zYS_SKggPN4iEgvnHyvveLxVvaorCIPrE.woff2)
+      format('woff2');
 }
 
 @font-face {
-    font-family: 'Raleway';
-    font-style: normal;
-    font-weight: 700;
-    font-display: swap;
-    src: local('Raleway Bold'), local('Raleway-Bold'), url(https://fonts.gstatic.com/s/raleway/v22/1Ptxg8zYS_SKggPN4iEgvnHyvveLxVs9pbCIPrE.woff2) format('woff2');
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src:
+    local('Raleway Bold'),
+    local('Raleway-Bold'),
+    url(https://fonts.gstatic.com/s/raleway/v22/1Ptxg8zYS_SKggPN4iEgvnHyvveLxVs9pbCIPrE.woff2)
+      format('woff2');
 }
 
 @font-face {
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 300;
-    font-display: swap;
-    src: local('Roboto Light'), local('Roboto-Light'), url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmSU5fBBc4.woff2) format('woff2');
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src:
+    local('Roboto Light'),
+    local('Roboto-Light'),
+    url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmSU5fBBc4.woff2) format('woff2');
 }
 
 @font-face {
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 400;
-    font-display: swap;
-    src: local('Roboto'), local('Roboto-Regular'), url(https://fonts.gstatic.com/s/roboto/v20/KFOmCnqEu92Fr1Mu4mxK.woff2) format('woff2');
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src:
+    local('Roboto'),
+    local('Roboto-Regular'),
+    url(https://fonts.gstatic.com/s/roboto/v20/KFOmCnqEu92Fr1Mu4mxK.woff2) format('woff2');
 }
 
 @font-face {
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 700;
-    font-display: swap;
-    src: local('Roboto Bold'), local('Roboto-Bold'), url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmWUlfBBc4.woff2) format('woff2');
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src:
+    local('Roboto Bold'),
+    local('Roboto-Bold'),
+    url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmWUlfBBc4.woff2) format('woff2');
 }
