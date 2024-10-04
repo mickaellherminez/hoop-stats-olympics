@@ -5,6 +5,7 @@
   "scripts": {
     "minify": "terser js/script.js -o js/script.min.js",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,css,scss,md}\"",
+    "lint:watch": "nodemon --watch js --ext js --exec \"npm run lint\"",
     "format:check": "prettier --check \"**/*.{js,jsx,ts,tsx,json,css,scss,md}\"",
     "lint": "eslint \"**/*.{js,jsx,ts,tsx}\"",
     "lint:fix": "eslint --fix \"**/*.{js,jsx,ts,tsx}\""
@@ -13,6 +14,7 @@
     "eslint": "^8.56.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.2.1",
+    "nodemon": "^3.1.7",
     "prettier": "^3.2.5",
     "terser": "^5.14.2"
   }

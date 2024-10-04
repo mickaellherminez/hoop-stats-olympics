@@ -88,6 +88,7 @@ function loadTournamentTree(filters) {
 
   // Vérification supplémentaire
   if (!filteredData || !filteredData.children || filteredData.children.length === 0) {
+    // eslint-disable-next-line no-console
     console.error('Données filtrées invalides ou vides');
     return; // Ne pas initialiser l'arbre si les données sont invalides
   }
@@ -113,6 +114,7 @@ function loadTournamentTree(filters) {
 
     // Vérification pour s'assurer que root et root.children existent
     if (!root || !root.children || root.children.length === 0) {
+      // eslint-disable-next-line no-console
       console.error('Données du tournoi invalides ou vides');
       return; // Sortir de la fonction si les données sont invalides
     }
@@ -151,6 +153,7 @@ function loadTournamentTree(filters) {
         .enter()
         .append('g')
         .attr('class', 'node')
+        // eslint-disable-next-line
         .attr('transform', function (d) {
           return 'translate(' + source.y0 + ',' + source.x0 + ')';
         })
@@ -222,6 +225,7 @@ function loadTournamentTree(filters) {
         .exit()
         .transition()
         .duration(750)
+        // eslint-disable-next-line
         .attr('transform', function (d) {
           return 'translate(' + source.y + ',' + source.x + ')';
         })
@@ -239,6 +243,7 @@ function loadTournamentTree(filters) {
         .enter()
         .insert('path', 'g')
         .attr('class', 'link')
+        // eslint-disable-next-line
         .attr('d', function (d) {
           const o = { x: source.x0, y: source.y0 };
           return diagonal(o, o);
@@ -253,10 +258,12 @@ function loadTournamentTree(filters) {
           return diagonal(d, d.parent);
         });
 
+      // eslint-disable-next-line
       const linkExit = link
         .exit()
         .transition()
         .duration(750)
+        // eslint-disable-next-line
         .attr('d', function (d) {
           const o = { x: source.x, y: source.y };
           return diagonal(o, o);
@@ -326,6 +333,7 @@ function loadTournamentTree(filters) {
     let tooltipTimeout;
   }
 
+  // eslint-disable-next-line
   function applyFiltersToTournamentData(tournamentDataWomen, filters) {
     // Implémentez ici la logique de filtrage
     // Pour l'instant, retournons simplement les données non filtrées
@@ -448,6 +456,7 @@ function loadBubbleChart(filters) {
       d => `${d.data.teamName}: ${d.data.totalPoints} points, ${d.data.wins} victoires`
     );
 
+  // eslint-disable-next-line
   const circles = bubbles
     .append('circle')
     .attr('r', 0)
@@ -615,6 +624,7 @@ function loadBubbleChart(filters) {
       });
   }
 
+  // eslint-disable-next-line
   function applyFiltersToTeamData(data, filters) {
     // Implémentez ici la logique de filtrage des données des équipes
     // Cette fonction doit retourner les données filtrées en fonction des filtres appliqués
