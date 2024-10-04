@@ -1,4 +1,4 @@
-name: Déploiement sur O2switch
+name: Déploiement 🚀
 
 on:
   push:
@@ -9,21 +9,21 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      - name: 📥 Checkout code
         uses: actions/checkout@v2
 
-      - name: Setup Node.js
+      - name: 🛠️ Setup Node.js
         uses: actions/setup-node@v2
         with:
           node-version: '22'
 
-      - name: Install dependencies
+      - name: 📦 Install dependencies
         run: npm install
 
-      - name: Minify JavaScript
+      - name: 🗜️ Minify JavaScript
         run: npm run minify
 
-      - name: Create .htaccess file
+      - name: 📄 Create .htaccess file
         run: |
           echo "
           <IfModule mod_expires.c>
@@ -40,7 +40,7 @@ jobs:
           ExpiresDefault \"access plus 2 days\"
           </IfModule>" > .htaccess
 
-      - name: Synchroniser les fichiers via FTP
+      - name: 🔄 Synchroniser les fichiers via FTP
         uses: SamKirkland/FTP-Deploy-Action@4.3.0
         with:
           server: ${{ secrets.HOST }}

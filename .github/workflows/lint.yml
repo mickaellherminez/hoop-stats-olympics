@@ -1,4 +1,4 @@
-name: Lint and Format
+name: Lint and Format 🧹
 
 on:
   push:
@@ -12,38 +12,39 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
+      name: 📥 Checkout code
 
-    - name: Use Node.js
+    - name: 🛠️ Use Node.js
       uses: actions/setup-node@v4
       with:
         node-version: '20'
 
-    - name: Install dependencies
+    - name: 📦 Install dependencies
       run: npm ci
 
-    - name: Run ESLint
+    - name: 🔍 Run ESLint
       run: npm run lint
 
-    - name: Run ESLint with auto-fix
+    - name: 🔧 Run ESLint with auto-fix
       if: failure()
       run: npm run lint:fix
 
-    - name: Check Prettier formatting
+    - name: 💅 Check Prettier formatting
       run: npm run format:check
 
-    - name: Run Prettier (if previous step failed)
+    - name: 🖌️ Run Prettier (if previous step failed)
       if: failure()
       run: npm run format
       
-    - name: Commit changes
+    - name: 💾 Commit changes
       if: failure()
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
         git add -A
-        git commit -m "Apply automatic formatting" -a
+        git commit -m "🤖 Apply automatic formatting" -a
       
-    - name: Push changes
+    - name: 🚀 Push changes
       if: failure()
       uses: ad-m/github-push-action@master
       with:

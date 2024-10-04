@@ -21,7 +21,7 @@ Expliquez comment utiliser votre application.
 
 ## Déploiement
 
-Le déploiement est automatisé via GitHub Actions. Chaque push sur la branche `main` déclenche un déploiement sur O2switch.
+Le déploiement est automatisé via GitHub Actions. Chaque push sur la branche `main` déclenche un déploiement.
 
 ## Contribution
 
