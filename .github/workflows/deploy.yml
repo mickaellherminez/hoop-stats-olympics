@@ -18,8 +18,9 @@ jobs:
           server: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
-          server-dir: /public_html/
+          server-dir: /
           local-dir: ./
           protocol: ftp
           port: ${{ secrets.PORT }}
           dangerous-clean-slate: true
+
