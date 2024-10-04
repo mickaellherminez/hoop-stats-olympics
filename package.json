@@ -1,0 +1,11 @@
+{
+  "name": "hoop-stats-olympics",
+  "version": "1.0.0",
+  "description": "Basketball statistics for Paris 2024 Olympics",
+  "scripts": {
+    "minify": "terser js/script.js -o js/script.min.js"
+  },
+  "devDependencies": {
+    "terser": "^5.14.2"
+  }
+}
