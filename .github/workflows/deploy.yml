@@ -44,6 +44,7 @@ jobs:
         run: |
           mkdir -p favicon
           cp assets/icons/* favicon/
+          ls -la favicon  # Cette commande listera le contenu du dossier favicon
 
       - name: 🔄 Synchroniser les fichiers via FTP
         uses: SamKirkland/FTP-Deploy-Action@4.3.0
@@ -57,6 +58,8 @@ jobs:
             **/.git*
             **/.git*/**
             **/node_modules/**
+          include: |
+            favicon/**
           protocol: ftp
           port: ${{ secrets.PORT }}
           dangerous-clean-slate: true
