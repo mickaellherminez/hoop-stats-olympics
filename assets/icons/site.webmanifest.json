@@ -2,7 +2,7 @@
   "name": "pollo",
   "icons": [
     {
-      "src": "/assets/icons/favicon-36.png",
+      "src": "assets/icons/favicon-36.png",
       "sizes": "36x36",
       "type": "image/png",
       "density": 0.75
