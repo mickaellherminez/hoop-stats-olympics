@@ -44,7 +44,6 @@ jobs:
         run: |
           mkdir -p favicon
           cp assets/icons/* favicon/
-          mv manifest.json favicon/manifest.json
           ls -la favicon
 
       - name: 🔄 Synchroniser les fichiers via FTP
