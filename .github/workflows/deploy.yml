@@ -40,6 +40,11 @@ jobs:
           ExpiresDefault \"access plus 2 days\"
           </IfModule>" > .htaccess
 
+      - name: 🖼️ Prepare favicon files
+        run: |
+          mkdir -p favicon
+          cp assets/icons/* favicon/
+
       - name: 🔄 Synchroniser les fichiers via FTP
         uses: SamKirkland/FTP-Deploy-Action@4.3.0
         with:
@@ -48,6 +53,10 @@ jobs:
           password: ${{ secrets.PASSWORD }}
           server-dir: /
           local-dir: ./
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/node_modules/**
           protocol: ftp
           port: ${{ secrets.PORT }}
           dangerous-clean-slate: true
