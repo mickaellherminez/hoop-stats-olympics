@@ -44,7 +44,8 @@ jobs:
         run: |
           mkdir -p favicon
           cp assets/icons/* favicon/
-          ls -la favicon  # Cette commande listera le contenu du dossier favicon
+          mv favicon/site.webmanifest.json favicon/site.webmanifest
+          ls -la favicon
 
       - name: 🔄 Synchroniser les fichiers via FTP
         uses: SamKirkland/FTP-Deploy-Action@4.3.0
