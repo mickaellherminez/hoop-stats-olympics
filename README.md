@@ -27,6 +27,10 @@ Le déploiement est automatisé via GitHub Actions. Chaque push sur la branche `
 
 Instructions pour contribuer au projet, si applicable.
 
+## Changelog
+
+Pour voir l'historique des modifications, veuillez consulter le fichier [CHANGELOG.md](CHANGELOG.md).
+
 ## Licence
 
 Spécifiez la licence de votre projet.
