@@ -9,9 +9,11 @@ et ce projet adhère au [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ### Ajouté
 - Fichier CHANGELOG.md pour suivre les modifications du projet
+- Favicon SVG pour une meilleure compatibilité et adaptabilité
 
 ### Modifié
 - Mise à jour du README.md pour inclure une référence au CHANGELOG.md
+- Mise à jour de index.html pour inclure le nouveau favicon SVG
 
 ## [0.1.0] - AAAA-MM-JJ
 
